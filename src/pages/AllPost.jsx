@@ -8,6 +8,7 @@ export default function AllPost() {
   useEffect(() => {
     getAllPosts();
   }, []);
+  console.log("test")
 
   return (
     <div className="p-6">
