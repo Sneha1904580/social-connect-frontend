@@ -10,6 +10,25 @@ const UserProvider = ({ children }) => {
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState(null); // for auth
 
+  const handleLogin = async (formData) => {
+    try {
+      const res = await axios.post(`${BaseUrl}api/auth/login`, formData);
+      setUser(res.data.data);
+      alert(res.data.message);
+    } catch (error) {
+      console.log("Error logging in:", error.response?.data || error);
+    } 
+  };
+
+  const handleRegister = async(formData)=>{
+    try{
+      const res = await axios.post(`${BaseUrl}api/auth/register`, formData);
+      alert(res.data.message);
+    } catch (error) {
+      console.log("Error registering user:", error.response?.data || error);
+    }
+  }
+
   const getAllPosts = async () => {
     try {
       const res = await axios.get(`${BaseUrl}api/posts/all`);
@@ -66,6 +85,8 @@ const UserProvider = ({ children }) => {
         user,
         setUser,
         getAllPosts,
+        handleLogin,
+        handleRegister,
         handleLike,
         handleCreatePost,
         handleDeletePost,
