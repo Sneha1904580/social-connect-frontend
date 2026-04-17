@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import UserContext from "../context/userContext";
+import UserContext from "../context/UserContext";
 
 axios.defaults.withCredentials = true;
 

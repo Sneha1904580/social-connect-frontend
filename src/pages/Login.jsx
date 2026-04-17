@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
-import userContext from "../context/userContext";
+import userContext from "../context/UserContext";
 
 export default function Login() {
 
