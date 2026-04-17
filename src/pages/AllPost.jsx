@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import UserContext from "../context/userContext";
+import UserContext from "../context/UserContext";
 
 export default function AllPost() {
   const { posts, getAllPosts, handleLike } = useContext(UserContext);

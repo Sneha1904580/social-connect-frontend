@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import UserContext from "../context/userContext";
+import UserContext from "../context/UserContext";
 import axios from "axios";
 
 export default function ViewPost() {

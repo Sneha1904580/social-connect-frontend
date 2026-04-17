@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import userContext from "../context/userContext";
+import userContext from "../context/UserContext";
 
 export default function Createpost() {
   const { handleCreatePost } = useContext(userContext);
