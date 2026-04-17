@@ -8,14 +8,12 @@ const UserProvider = ({ children }) => {
   const BaseUrl = import.meta.env.VITE_BASE_URL;
 
   const [posts, setPosts] = useState([]);
-  const [pagination, setPagination] = useState({});
   const [user, setUser] = useState(null); // for auth
 
-  const getAllPosts = async (page = 1) => {
+  const getAllPosts = async () => {
     try {
-      const res = await axios.get(`${BaseUrl}api/posts/all?page=${page}&limit=5`);
+      const res = await axios.get(`${BaseUrl}api/posts/all`);
       setPosts(res.data.data);
-      setPagination(res.data.paginatedData);
     } catch (error) {
       console.log("Error fetching posts:", error.response?.data || error);
     }
@@ -53,11 +51,9 @@ const UserProvider = ({ children }) => {
 
   const handleDeletePost = async (postId) => {
     try {
-      const res = await axios.delete(`${BaseUrl}api/posts/delete/${postId}`);
+      await axios.delete(`${BaseUrl}api/posts/delete/${postId}`);
 
       setPosts((prevPosts) => prevPosts.filter((p) => p._id !== postId));
-
-      return res.data;
     } catch (error) {
       console.log("Error deleting post:", error.response?.data || error.message);
     }
@@ -67,7 +63,6 @@ const UserProvider = ({ children }) => {
     <UserContext.Provider
       value={{
         posts,
-        pagination,
         user,
         setUser,
         getAllPosts,
